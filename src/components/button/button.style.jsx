@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { ReactComponent as PlusSvg } from "../../assets/icon-add-task-mobile.svg";
 
 export const ButtonComponent = styled.button`
@@ -7,9 +7,51 @@ export const ButtonComponent = styled.button`
   height: 48px;
   width: 174px;
   border: none;
+  ${({ type }) => {
+    if (type === "inverted")
+      return css`
+        background-color: #fff;
+        border-radius: 24px;
+        height: 40px;
+        font-weight: 500;
+        width: 100%;
+        border: none;
+        margin: 5px 0 15px 0;
+        font-size: 13px;
+        color: #635fc7;
+        &:hover {
+          background-color: #635fc7;
+          color: #fff;
+        }
+      `;
+    if (type === "normal")
+      return css`
+        background-color: #635fc7;
+        height: 40px;
+        font-weight: 400;
+        width: 100%;
+
+        color: #fff;
+        &:hover {
+          background-color: #fff;
+          color: #635fc7;
+        }
+      `;
+    if (type === "delete")
+      return css`
+        background-color: #ea5555;
+        height: 40px;
+        font-weight: 400;
+        width: 100%;
+        margin-bottom: 10px;
+
+        color: #fff;
+        &:hover {
+          background-color: #ea5555;
+          color: #635fc7;
+        }
+      `;
+  }}
 `;
-export const Buttontext = styled.span`
-  font-size: 15px;
-  color: white;
-`;
+export const Buttontext = styled.span``;
 export const ButtonPlus = styled(PlusSvg)``;

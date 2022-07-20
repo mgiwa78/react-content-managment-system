@@ -66,6 +66,7 @@ export const DesktopLogoBox = styled.div`
   height: 80px;
   @media screen and (min-width: 700px) {
     padding-left: 14px;
+    font-size: 15px;
   }
   @media screen and (min-width: 1000px) {
     margin-right: 70px;

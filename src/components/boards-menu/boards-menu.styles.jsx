@@ -6,7 +6,7 @@ import { ReactComponent as PeekSvg } from "../../assets/icon-hide-sidebar.svg";
 export const BoardsMenuContainer = styled.div`
   width: 264px;
   height: 322px;
-  position: relative;
+  /* position: fixed; */
   z-index: 9;
   left: 50%;
   top: 50px;

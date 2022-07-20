@@ -1,11 +1,11 @@
 import React from "react";
 import { ButtonComponent, ButtonPlus, Buttontext } from "./button.style";
 
-const Button = () => {
+const Button = ({ btnType, children }) => {
   return (
-    <ButtonComponent>
+    <ButtonComponent type={btnType}>
       {/* <ButtonPlus /> */}
-      <Buttontext>+ Add New Column</Buttontext>
+      <Buttontext>{children}</Buttontext>
     </ButtonComponent>
   );
 };
