@@ -11,7 +11,9 @@ const BoardColumn = ({ board }) => {
   return (
     <BoardsColumnContainer>
       <BoardsColumnsTitle>
-        <BoardsColumnsTitleColour></BoardsColumnsTitleColour>
+        <BoardsColumnsTitleColour
+          style={{ backgroundColor: "blue" }}
+        ></BoardsColumnsTitleColour>
         {name.toUpperCase()}
       </BoardsColumnsTitle>
       {tasks.map((task) => (

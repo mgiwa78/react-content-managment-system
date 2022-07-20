@@ -1,4 +1,4 @@
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import { ReactComponent as ArrowSvg } from "../../assets/icon-chevron-down.svg";
 import { ReactComponent as TrailSvg } from "../../assets/icon-vertical-ellipsis.svg";
 import { ReactComponent as PlusSvg } from "../../assets/icon-add-task-mobile.svg";
@@ -75,8 +75,63 @@ export const DesktopLogoBox = styled.div`
     width: 300px;
   }
 `;
+export const MenuBtnDrpIconBox = styled.div`
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  align-items: center;
+`;
 export const MenuBtnDrpIcon = styled(ArrowSvg)`
+  text-align: center;
+`;
+export const MenuBtnDrpDwn = styled.div`
   margin-left: 10px;
+`;
+export const MenuBtnDrpDwnOption = styled.ul`
+  position: absolute;
+  list-style: none;
+  display: flex;
+  /* display: flex; */
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: center;
+
+  right: 15px;
+  top: 65px;
+  width: 194px;
+  height: inherit;
+  background-color: #20212c;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #828fa3;
+  text-align: left;
+  box-shadow: -2px 2px 4px #364e7e7f;
+  @media screen and (min-width: 700px) {
+  }
+  @media screen and (min-width: 1000px) {
+    right: 70px;
+    top: 80px;
+    font-size: 15px;
+  }
+`;
+export const MenuBtnDrpDwnItem = styled.li`
+  height: 46px;
+  padding: 15px;
+  border-radius: 5px;
+  width: 100%;
+
+  ${({ itemType }) => {
+    if (itemType === "red")
+      return css`
+        color: #ea5555;
+        &:hover {
+          background-color: #ea5555;
+          color: #fff;
+        }
+      `;
+  }}
 `;
 export const MenuBtnPlusIconBox = styled.div`
   display: flex;
@@ -93,9 +148,15 @@ export const MenuBtnPlusIconBox = styled.div`
     color: white;
   }
 `;
-export const PlusBtnText = styled.span``;
+export const PlusBtnText = styled.span`
+  font-size: 18px;
+`;
 export const PlusIcon = styled(PlusSvg)`
   width: 12px;
+`;
+export const MenutrailIconBox = styled.div`
+  width: 30px;
+  height: max-content;
 `;
 export const MenutrailIcon = styled(TrailSvg)`
   margin-left: 10px;

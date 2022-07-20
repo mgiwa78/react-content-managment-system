@@ -17,8 +17,16 @@ export const BoardsColumnContainer = styled.div`
   }
 `;
 
-export const BoardsColumnsTitleColour = styled.span``;
+export const BoardsColumnsTitleColour = styled.div`
+  width: 15px;
+  background-color: #000;
+  margin-right: 10px;
+  border-radius: 15px;
+
+  height: 15px;
+`;
 export const BoardsColumnsTitle = styled.span`
+  display: inline-flex;
   font-size: 12px;
   margin-bottom: 10px;
   text-transform: capitalize;

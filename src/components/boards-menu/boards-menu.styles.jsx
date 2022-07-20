@@ -6,16 +6,16 @@ import { ReactComponent as PeekSvg } from "../../assets/icon-hide-sidebar.svg";
 export const BoardsMenuContainer = styled.div`
   width: 264px;
   height: 322px;
-  /* position: fixed; */
-  z-index: 9;
-  left: 50%;
-  top: 50px;
-  transform: translateX(-50%);
+  position: relative;
+  z-index: 10;
+  top: 0px;
+  margin-top: 150px;
+  /* transform: translateX(-50%); */
   box-shadow: 0px 5px 5px 4px #364e7e20;
   border-radius: 8px;
   background-color: #2b2c37;
   padding: 20px;
-  display: none;
+  /* display: none; */
   align-items: flex-start;
   flex-direction: column;
 
@@ -35,6 +35,7 @@ export const BoardsMenuContainer = styled.div`
     overflow: hidden;
     z-index: 8;
     display: flex;
+    justify-content: space-between;
 
     width: 261px;
     height: 100%;
@@ -128,13 +129,16 @@ export const BoardsMenuitemContainer = styled.div`
 `;
 export const BoardermenuBottom = styled.div`
   width: 100%;
-  padding: 20px 20px;
+  bottom: 100px;
   @media screen and (min-width: 700px) {
-    text-align: left;
+    width: 100%;
+    position: relative;
+    padding: 20px 20px;
+    margin-left: -20px;
   }
 `;
 export const StyleModeToggle = styled.div`
-  width: 235px;
+  width: 100%;
   background-color: #20212c;
   border-radius: 6px;
   height: 48px;
@@ -143,12 +147,12 @@ export const StyleModeToggle = styled.div`
   justify-content: space-around;
   align-items: center;
   @media screen and (min-width: 700px) {
-    width: 100%;
+    width: 80%;
     padding: 0 10px;
-    margin-top: -170px !important;
+    width: 180px;
+    margin-left: 25px;
 
     position: relative;
-    bottom: 0;
   }
 `;
 export const Toggle = styled.div``;
@@ -167,6 +171,23 @@ export const TogglePeek = styled.div`
   height: max-content;
   margin-top: 10px;
   width: 100%;
+  padding: 15px;
   text-align: left;
   color: #828fa3;
+  font-weight: 600;
+
+  &:hover {
+    background-color: #fff;
+    color: black;
+  }
+  @media screen and (min-width: 700px) {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 30px;
+  }
+  @media screen and (min-width: 1000px) {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding-left: 30px;
+  }
 `;

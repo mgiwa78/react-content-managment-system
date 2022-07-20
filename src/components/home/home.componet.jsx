@@ -23,9 +23,6 @@ const Home = () => {
         <Navigation />
         <HomeDisplay>
           {/* <OverlayContainer>
-            <BoardsMenu />
-          </OverlayContainer> */}
-          {/* <OverlayContainer>
             <Task />
           </OverlayContainer> */}
           {/* <OverlayContainer>
@@ -40,7 +37,7 @@ const Home = () => {
           {/* <OverlayContainer>
             <Delete />
           </OverlayContainer> */}
-          <BoardsMenu className="desktop" />
+          {/* <BoardsMenu className="desktop" /> */}
           <BoardsDirectory boards={boardsDirData} />
           {/* <EmptyMsg></EmptyMsg> */}
         </HomeDisplay>
