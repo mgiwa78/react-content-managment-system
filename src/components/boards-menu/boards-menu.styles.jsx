@@ -84,6 +84,7 @@ export const Boarditems = styled.div`
 `;
 export const BoardsMenuitem = styled(Boarditems)`
   color: #828fa3;
+  text-decoration: none;
 
   &&:hover {
     color: white;

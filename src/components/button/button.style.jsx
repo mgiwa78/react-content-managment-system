@@ -20,6 +20,8 @@ export const ButtonComponent = styled.button`
         font-size: 13px;
         color: #635fc7;
         &:hover {
+          cursor: pointer;
+
           background-color: #635fc7;
           color: #fff;
         }
@@ -33,22 +35,28 @@ export const ButtonComponent = styled.button`
 
         color: #fff;
         &:hover {
+          cursor: pointer;
+
           background-color: #fff;
           color: #635fc7;
+          font-weight: 700;
         }
       `;
     if (type === "delete")
       return css`
         background-color: #ea5555;
         height: 40px;
-        font-weight: 400;
+        font-weight: 500;
         width: 100%;
         margin-bottom: 10px;
 
         color: #fff;
         &:hover {
-          background-color: #ea5555;
-          color: #635fc7;
+          cursor: pointer;
+          font-weight: 700;
+
+          background-color: white;
+          color: #ea5555;
         }
       `;
   }}

@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { SelectDrp } from "../form-input/form-input.component";
+import OverlayContainer from "../overlaycontainer/overlay.component";
+import { OverLayContainerDiv } from "../overlaycontainer/overlay.styles";
 import {
   CheckBoxIcon,
+  MenuBtnDrpDwnItem,
+  MenuBtnDrpDwnOption,
+  MenutrailIcon,
+  MenutrailIconBox,
   TaskCheckBox,
   TaskCheckBoxIcon,
   TaskCheckBoxName,
@@ -17,60 +24,65 @@ import {
   TaskTitle,
 } from "./task.style";
 
-const Task = () => {
+const Task = ({ task }) => {
+  console.log(task);
+  const [optionDrp, setOptionDrp] = useState(false);
+  const handleSetOptionDrp = () => {
+    setOptionDrp(!optionDrp);
+  };
   return (
-    <TaskContainer>
-      <TaskContainerTop>
-        <TaskTitle>
-          Research pricing points of various competitors and trial different
-          business models
-        </TaskTitle>
-        <TaskDescription>
-          We know what we're planning to build for version one. Now we need to
-          finalise the first pricing model we'll use. Keep iterating the
-          subtasks until we have a coherent proposition.
-        </TaskDescription>
-      </TaskContainerTop>
-      <TaskContainerBottom>
-        <TaskSubtasksTitle>Subtasks (2 of 3)</TaskSubtasksTitle>
-        <TaskCheckBox>
-          <TaskCheckIconBox style={{ backgroundColor: "#635fc7" }}>
-            {" "}
-            <CheckBoxIcon />
-          </TaskCheckIconBox>
+    <OverlayContainer>
+      <TaskContainer>
+        <TaskContainerTop>
+          <TaskTitle>
+            {task.title}
 
-          <TaskCheckBoxName>
-            Research competitor pricing and business models
-          </TaskCheckBoxName>
-        </TaskCheckBox>
-        <TaskCheckBox>
-          <TaskCheckIconBox style={{ backgroundColor: "#635fc7" }}>
-            {" "}
-            <CheckBoxIcon />
-          </TaskCheckIconBox>
+            <MenutrailIconBox onClick={() => handleSetOptionDrp()}>
+              <MenutrailIcon />
+            </MenutrailIconBox>
+          </TaskTitle>
 
-          <TaskCheckBoxName>Surveying</TaskCheckBoxName>
-        </TaskCheckBox>
-        <TaskCheckBox>
-          <TaskCheckIconBox style={{ backgroundColor: "#fff" }}>
-            {" "}
-            <CheckBoxIcon />
-          </TaskCheckIconBox>
+          {optionDrp ? (
+            <MenuBtnDrpDwnOption>
+              <MenuBtnDrpDwnItem itemType="normal">
+                Edit Board
+              </MenuBtnDrpDwnItem>
+              <MenuBtnDrpDwnItem itemType="red">Delete Board</MenuBtnDrpDwnItem>
+            </MenuBtnDrpDwnOption>
+          ) : (
+            ""
+          )}
+          <TaskDescription>{task.description}</TaskDescription>
+        </TaskContainerTop>
+        <TaskContainerBottom>
+          <TaskSubtasksTitle>Subtasks (2 of 3)</TaskSubtasksTitle>
+          {task.subtasks.map((subtask) => (
+            <TaskCheckBox
+              key={subtask.title}
+              className={`checked ${subtask.isCompleted && "complete"}`}
+            >
+              <TaskCheckIconBox
+                className="check-icon-box"
+                style={
+                  subtask.isCompleted
+                    ? { backgroundColor: "#635fc7" }
+                    : { backgroundColor: "#fff" }
+                }
+              >
+                {" "}
+                <CheckBoxIcon />
+              </TaskCheckIconBox>
+              <TaskCheckBoxName>{subtask.title}</TaskCheckBoxName>
+            </TaskCheckBox>
+          ))}
 
-          <TaskCheckBoxName>
-            Outline a business model that works for our solution
-          </TaskCheckBoxName>
-        </TaskCheckBox>
-        <TaskDropdown>
-          <TaskDropdownTitle>Current Status</TaskDropdownTitle>
-          <TaskDropdownSelect>
-            <TaskDropdownOption>Doing</TaskDropdownOption>
-            <TaskDropdownOption>Done</TaskDropdownOption>
-            <TaskDropdownOption>Doing</TaskDropdownOption>
-          </TaskDropdownSelect>
-        </TaskDropdown>
-      </TaskContainerBottom>
-    </TaskContainer>
+          <TaskDropdown>
+            <TaskDropdownTitle>Current Status</TaskDropdownTitle>
+            <SelectDrp items={["Doing", "Done", "Todo"]}></SelectDrp>
+          </TaskDropdown>
+        </TaskContainerBottom>
+      </TaskContainer>
+    </OverlayContainer>
   );
 };
 

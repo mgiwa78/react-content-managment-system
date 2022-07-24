@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  SelectBoardsArray,
+  SelectTaskObject,
+} from "../../store/country/task.selector";
 import OverlayContainer from "../overlaycontainer/overlay.component";
 import {
   BoardermenuBottom,
@@ -19,25 +23,35 @@ import {
   StyleModeToggle,
   TogglePeek,
 } from "./boards-menu.styles";
+import { Navigate, Link } from "react-router-dom";
 
-const BoardsMenu = () => {
+import { useSelector, useDispatch } from "react-redux";
+import { setBoardsAction } from "../../store/country/task.action";
+
+const BoardsMenu = ({ handleHideMenu }) => {
+  const boardsArray = useSelector(SelectBoardsArray);
+
+  const [boardsItems, setBoardItems] = useState([]);
+  useEffect(() => {
+    if (!boardsArray) return;
+    setBoardItems(boardsArray);
+  }, [boardsArray]);
   return (
     <BoardsMenuContainer>
       <BoardsMenuitemContainer>
         <BoardsMenuTitle>ALL BOARDS (3)</BoardsMenuTitle>
         <BoardsItems>
-          <BoardsMenuitem>
-            <BoardsItemBullet className="bullet" />{" "}
-            <BoardsItemName>Platform Launch</BoardsItemName>
-          </BoardsMenuitem>
-          <BoardsMenuitem>
-            <BoardsItemBullet className="bullet" />{" "}
-            <BoardsItemName>Marketing Plan</BoardsItemName>
-          </BoardsMenuitem>
-          <BoardsMenuitem>
-            <BoardsItemBullet className="bullet" />{" "}
-            <BoardsItemName>Roadmap</BoardsItemName>
-          </BoardsMenuitem>
+          {boardsItems.map((board) => (
+            <BoardsMenuitem
+              as={Link}
+              to={`/${board.name.split(" ").join("")}`}
+              key={board.name}
+            >
+              <BoardsItemBullet className="bullet" />{" "}
+              <BoardsItemName>{board.name}</BoardsItemName>
+            </BoardsMenuitem>
+          ))}
+
           <BoardsMenuAdditem>
             <BoardsAdditemBullet className="add_bullet" />{" "}
             <BoardsAdditemName>+ Create New Board</BoardsAdditemName>
@@ -49,7 +63,7 @@ const BoardsMenu = () => {
           <DarkIcon />
           <LightIcon />
         </StyleModeToggle>
-        <TogglePeek className="desktop">
+        <TogglePeek onClick={() => handleHideMenu()} className="desktop">
           <PeekIcon />
           <PeekText>Hide Sidebar</PeekText>
         </TogglePeek>

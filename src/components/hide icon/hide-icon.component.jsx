@@ -1,10 +1,10 @@
 import React from "react";
-import { HideIconContainer } from "./hide-icon.styles";
+import { HideIconContainer, HideSvgIcon } from "./hide-icon.styles";
 
-const HideIcon = () => {
+const HideIcon = ({ handleClick }) => {
   return (
-    <HideIconContainer>
-      <HideIcon />
+    <HideIconContainer onClick={() => handleClick()}>
+      <HideSvgIcon />
     </HideIconContainer>
   );
 };

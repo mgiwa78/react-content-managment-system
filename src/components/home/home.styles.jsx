@@ -24,7 +24,7 @@ export const HomeContainer = styled.div`
   overflow-y: hidden;
 `;
 export const HomeDisplay = styled.div`
-  padding: 100px 30px 40px;
+  padding: 130px 30px 40px;
   background-color: #20212c;
   height: inherit;
   min-width: 100vw;
@@ -32,7 +32,7 @@ export const HomeDisplay = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;

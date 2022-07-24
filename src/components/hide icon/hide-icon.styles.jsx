@@ -2,14 +2,15 @@ import styled from "styled-components/macro";
 import { ReactComponent as HideIconSvg } from "../../assets/icon-show-sidebar.svg";
 
 export const HideIconContainer = styled.div`
-  width: 56px;
+  width: 40px;
   height: 48px;
   background-color: #635fc7;
-  position: fixed;
+  position: absolute;
   bottom: 40px;
   border-top-right-radius: 60px;
   border-bottom-right-radius: 60px;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
-export const HideIcon = styled(HideIconSvg)``;
+export const HideSvgIcon = styled(HideIconSvg)``;

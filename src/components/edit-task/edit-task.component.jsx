@@ -1,6 +1,9 @@
 import React from "react";
 import Button from "../button/button.compoent";
-import FormInput, { TextAreaInput } from "../form-input/form-input.component";
+import FormInput, {
+  SelectDrp,
+  TextAreaInput,
+} from "../form-input/form-input.component";
 import {
   EditTaskContainer,
   EditTaskDesctription,
@@ -18,9 +21,10 @@ import {
 const EditTask = () => {
   return (
     <EditTaskContainer>
-      <EditTaskTitle>Add new task</EditTaskTitle>
+      <EditTaskTitle>Edit task</EditTaskTitle>
 
       <FormInput
+        // classname="red"
         placeholder={"Enter Title"}
         label={"title"}
         name={"title"}
@@ -68,11 +72,8 @@ const EditTask = () => {
       </EditTaskSubTaskSection>
       <EditTaskStatusSection>
         <EditTaskDropdownTitle>Status</EditTaskDropdownTitle>
-        <EditTaskDropdownSelect>
-          <EditTaskDropdownOption>Todo</EditTaskDropdownOption>
-          <EditTaskDropdownOption>Done</EditTaskDropdownOption>
-          <EditTaskDropdownOption>Doing</EditTaskDropdownOption>
-        </EditTaskDropdownSelect>
+        <SelectDrp items={["Doing", "Done", "Todo"]}></SelectDrp>
+
         <Button btnType="normal">Create Task</Button>
       </EditTaskStatusSection>
     </EditTaskContainer>

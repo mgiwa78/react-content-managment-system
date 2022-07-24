@@ -10,6 +10,7 @@ export const TaskItemContainer = styled.div`
   border-radius: 8px;
   background-color: #2b2c37;
   margin-bottom: 20px;
+  box-shadow: 0px 2px 9px 2px #364e7e27;
 `;
 export const TaskItemTitle = styled.span`
   font-size: 15px;

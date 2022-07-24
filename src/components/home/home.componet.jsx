@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BoardsDirectory from "../board-directory/board-directory.component";
 import BoardsMenu from "../boards-menu/boards-menu.component";
 import EmptyMsg from "../empty-msg/emptymsg.component";
@@ -11,8 +11,17 @@ import AddTask from "../add task/add-task.component";
 import EditTask from "../edit-task/edit-task.component";
 import AddBoard from "../add-new-board/add-board.component";
 import Delete from "../delete board/delete-board.comtainer";
+import { useDispatch } from "react-redux";
+import { setTasksAction } from "../../store/country/task.action";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  dispatch(setTasksAction(fullData));
+
+  const [boardNav, SetboardNav] = useState(false);
+  const handleState = () => {
+    SetboardNav(!boardNav);
+  };
   const { boards } = fullData;
   const boardsDirData = boards[0];
   return (
@@ -25,7 +34,7 @@ const Home = () => {
           {/* <OverlayContainer>
             <Task />
           </OverlayContainer> */}
-          {/* <OverlayContainer>
+          {/* <OverlayContainer handleClick={handleState}>
             <AddTask />
           </OverlayContainer> */}
           {/* <OverlayContainer>
@@ -38,7 +47,7 @@ const Home = () => {
             <Delete />
           </OverlayContainer> */}
           {/* <BoardsMenu className="desktop" /> */}
-          <BoardsDirectory boards={boardsDirData} />
+          <BoardsDirectory />
           {/* <EmptyMsg></EmptyMsg> */}
         </HomeDisplay>
       </HomeContainer>
