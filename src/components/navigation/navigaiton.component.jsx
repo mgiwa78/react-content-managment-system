@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AddTask from "../add task/add-task.component";
 import BoardsMenu from "../boards-menu/boards-menu.component";
+import EditBoard from "../edit board/edit-board.component";
 import HideIcon from "../hide icon/hide-icon.component";
 import OverlayContainer from "../overlaycontainer/overlay.component";
 import {
@@ -39,24 +40,25 @@ const Navigation = () => {
   const handleSetOptionDrp = () => {
     setOptionDrp(!optionDrp);
   };
-  const [addTaskDisplay, setAddTaskDisplay] = useState(false);
 
+  const [addTaskDisplay, setAddTaskDisplay] = useState(false);
   const handleAddTaskDisplay = (e) => {
     setAddTaskDisplay(!addTaskDisplay);
   };
+
+  const [editBoardDisplayState, SetEditBoardDisplayState] = useState(false);
+  const handleSetEditBoardDisplayState = (e) => {
+    SetEditBoardDisplayState(!editBoardDisplayState);
+  };
   return (
     <>
-      <HideIcon handleClick={handlesetBoardsMenuState} />
       <MenuComponent>
-        {boardsMenu ? (
-          // <OverlayContainer handleClick={handlesetBoardsMenuState}>
-          <BoardsMenu handleHideMenu={handlesetBoardsMenuState} />
-        ) : (
-          // </OverlayContainer>
-          ""
-        )}
         {boardNav ? (
-          <OverlayContainer type="transparent" handleClick={handleMenuDrpDwn}>
+          <OverlayContainer
+            onExit={() => handleMenuDrpDwn()}
+            type="transparent"
+            handleClick={handleMenuDrpDwn}
+          >
             <BoardsMenu />
           </OverlayContainer>
         ) : (
@@ -87,7 +89,10 @@ const Navigation = () => {
             </MenutrailIconBox>
             {optionDrp ? (
               <MenuBtnDrpDwnOption>
-                <MenuBtnDrpDwnItem itemType="normal">
+                <MenuBtnDrpDwnItem
+                  onClick={() => handleSetEditBoardDisplayState()}
+                  itemType="normal"
+                >
                   Edit Board
                 </MenuBtnDrpDwnItem>
                 <MenuBtnDrpDwnItem itemType="red">
@@ -101,6 +106,11 @@ const Navigation = () => {
         </MenuConstainerRight>
       </MenuComponent>
       {addTaskDisplay ? <AddTask onExit={handleAddTaskDisplay} /> : ""}
+      {editBoardDisplayState ? (
+        <EditBoard onExit={handleSetEditBoardDisplayState} />
+      ) : (
+        ""
+      )}
     </>
   );
 };

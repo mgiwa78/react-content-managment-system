@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../button/button.compoent";
 import FormInput, { TextAreaInput } from "../form-input/form-input.component";
+import OverlayContainer from "../overlaycontainer/overlay.component";
 import {
   AddBoardContainer,
   AddBoardSubBoardBox,
@@ -10,43 +11,45 @@ import {
   AddBoardTitle,
 } from "./add-board.style";
 
-const AddBoard = () => {
+const AddBoard = ({ onExit }) => {
   return (
-    <AddBoardContainer>
-      <AddBoardTitle>Add new Board</AddBoardTitle>
-      <FormInput
-        placeholder={"e.g. Web Design"}
-        label={"Board Name"}
-        name={"title"}
-        value={"Enter title"}
-      />
-      <AddBoardSubBoardSection>
-        <AddBoardSubBoardTitle> Board Colums</AddBoardSubBoardTitle>
-        <AddBoardSubBoardBox>
-          <FormInput
-            placeholder={"Enter Title"}
-            name={"title"}
-            value={"Enter title"}
-          />
-          {/* <AddBoardSubBoardTitle></AddBoardSubBoardTitle> */}
-          <AddBoardSubBoardCancel />
-        </AddBoardSubBoardBox>
-        <AddBoardSubBoardBox>
-          <FormInput
-            placeholder={"Enter Title"}
-            name={"title"}
-            value={"Enter title"}
-          />
-          {/* <AddBoardSubBoardTitle></AddBoardSubBoardTitle> */}
-          <AddBoardSubBoardCancel />
-        </AddBoardSubBoardBox>
+    <OverlayContainer onExit={onExit}>
+      <AddBoardContainer>
+        <AddBoardTitle>Add new Board</AddBoardTitle>
+        <FormInput
+          placeholder={"e.g. Web Design"}
+          label={"Board Name"}
+          name={"title"}
+          value={"Enter title"}
+        />
+        <AddBoardSubBoardSection>
+          <AddBoardSubBoardTitle> Board Colums</AddBoardSubBoardTitle>
+          <AddBoardSubBoardBox>
+            <FormInput
+              placeholder={"Enter Title"}
+              name={"title"}
+              value={"Enter title"}
+            />
+            {/* <AddBoardSubBoardTitle></AddBoardSubBoardTitle> */}
+            <AddBoardSubBoardCancel />
+          </AddBoardSubBoardBox>
+          <AddBoardSubBoardBox>
+            <FormInput
+              placeholder={"Enter Title"}
+              name={"title"}
+              value={"Enter title"}
+            />
+            {/* <AddBoardSubBoardTitle></AddBoardSubBoardTitle> */}
+            <AddBoardSubBoardCancel />
+          </AddBoardSubBoardBox>
 
-        <Button btnType="inverted">+ Add New SubBoard</Button>
-      </AddBoardSubBoardSection>
-      <Button className="create_board" btnType="normal">
-        Create Board
-      </Button>
-    </AddBoardContainer>
+          <Button btnType="inverted">+ Add New SubBoard</Button>
+        </AddBoardSubBoardSection>
+        <Button className="create_board" btnType="normal">
+          Create Board
+        </Button>
+      </AddBoardContainer>
+    </OverlayContainer>
   );
 };
 

@@ -6,7 +6,7 @@ import { ReactComponent as PeekSvg } from "../../assets/icon-hide-sidebar.svg";
 export const BoardsMenuContainer = styled.div`
   width: 264px;
   height: 322px;
-  position: relative;
+  position: absolute;
   z-index: 10;
   top: 0px;
   margin-top: 150px;
@@ -22,27 +22,26 @@ export const BoardsMenuContainer = styled.div`
   @media screen and (min-width: 700px) {
     justify-content: space-between;
     z-index: 4;
-    left: 0;
-    top: 0px;
 
-    margin-top: 80px;
+    margin: 0px;
     border-radius: 0;
     transform: none;
-    position: fixed;
+    position: relative;
     box-shadow: none;
-    padding: 40px 0 0 0px;
+    padding: 10px 0 0px 0px;
     font-size: 15px;
     overflow: hidden;
-    z-index: 8;
+    z-index: 18;
     display: flex;
     justify-content: space-between;
 
     width: 261px;
-    height: 100%;
+    height: calc(100vh - 80px);
     border-right: 2px solid #3e3f4e;
   }
   @media screen and (min-width: 1000px) {
     width: 300px;
+    height: calc(100vh - 94px);
   }
 `;
 export const BoardsItems = styled.div`
@@ -130,11 +129,12 @@ export const BoardsMenuitemContainer = styled.div`
 `;
 export const BoardermenuBottom = styled.div`
   width: 100%;
-  bottom: 100px;
+  bottom: 10px;
+
   @media screen and (min-width: 700px) {
     width: 100%;
-    position: relative;
-    padding: 20px 20px;
+    position: static;
+    padding: 20px 20px 10px 20px;
     margin-left: -20px;
   }
 `;

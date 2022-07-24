@@ -8,7 +8,7 @@ import { ReactComponent as DesktopLogoSvg } from "../../assets/logo-light.svg";
 export const MenuComponent = styled.div`
   z-index: 8;
   display: flex;
-  position: absolute;
+  position: relative;
   justify-content: space-between;
   padding: 20px 15px;
   background-color: #2b2c37;

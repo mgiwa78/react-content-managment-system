@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import BoardColumn from "../board-column/board-column.component";
-import { BoardDirectoryContainer } from "./board-directory.styles";
+import {
+  AddBoardContainer,
+  BoardDirectoryContainer,
+} from "./board-directory.styles";
 import { useSelector, useDispatch } from "react-redux";
 import {
   SelectBoardsObject,
@@ -40,6 +43,7 @@ const BoardsDirectory = () => {
       {boards?.map((board) => (
         <BoardColumn key={board.name} board={board}></BoardColumn>
       ))}
+      <AddBoardContainer>+ New Column</AddBoardContainer>
     </BoardDirectoryContainer>
   );
 };

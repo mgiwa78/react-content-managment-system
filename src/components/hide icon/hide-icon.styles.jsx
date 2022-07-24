@@ -6,7 +6,7 @@ export const HideIconContainer = styled.div`
   height: 48px;
   background-color: #635fc7;
   position: absolute;
-  bottom: 40px;
+  bottom: 10px;
   border-top-right-radius: 60px;
   border-bottom-right-radius: 60px;
   display: flex;

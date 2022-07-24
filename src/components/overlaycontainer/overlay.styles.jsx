@@ -9,7 +9,8 @@ export const OverLayContainerDiv = styled.div`
   left: 0;
   top: 0;
   padding: 0 30px;
-  background-color: #ffffff4a;
+  background-color: #0000004b;
+
   z-index: 9;
   overflow: hidden;
   display: flex;

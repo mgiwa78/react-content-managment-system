@@ -13,6 +13,7 @@ import AddBoard from "../add-new-board/add-board.component";
 import Delete from "../delete board/delete-board.comtainer";
 import { useDispatch } from "react-redux";
 import { setTasksAction } from "../../store/country/task.action";
+import HideIcon from "../hide icon/hide-icon.component";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,14 +24,26 @@ const Home = () => {
     SetboardNav(!boardNav);
   };
   const { boards } = fullData;
-  const boardsDirData = boards[0];
+  const [boardsMenu, setBoardsMenuState] = useState(false);
+  const handlesetBoardsMenuState = () => {
+    setBoardsMenuState(!boardsMenu);
+  };
   return (
     <>
       {" "}
       <GlobalStyle />
       <HomeContainer>
         <Navigation />
+
+        <HideIcon handleClick={handlesetBoardsMenuState} />
         <HomeDisplay>
+          {boardsMenu ? (
+            // <OverlayContainer handleClick={handlesetBoardsMenuState}>
+            <BoardsMenu handleHideMenu={handlesetBoardsMenuState} />
+          ) : (
+            // </OverlayContainer>
+            ""
+          )}
           {/* <OverlayContainer>
             <Task />
           </OverlayContainer> */}
