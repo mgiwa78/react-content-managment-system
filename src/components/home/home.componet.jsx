@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BoardsDirectory from "../board-directory/board-directory.component";
 import BoardsMenu from "../boards-menu/boards-menu.component";
 import EmptyMsg from "../empty-msg/emptymsg.component";
@@ -11,28 +11,76 @@ import AddTask from "../add task/add-task.component";
 import EditTask from "../edit-task/edit-task.component";
 import AddBoard from "../add-new-board/add-board.component";
 import Delete from "../delete board/delete-board.comtainer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setTasksAction } from "../../store/country/task.action";
 import HideIcon from "../hide icon/hide-icon.component";
+import { SetViewMode } from "../../store/style/style.action";
+import { SelectStlyeMode } from "../../store/style/style.selector";
 
 const Home = () => {
   const dispatch = useDispatch();
-  dispatch(setTasksAction(fullData));
+  const defaultStyle = {
+    id: "dark",
+    backgroundColor: "#20212c",
+    elements: {
+      backgroundColor: "#2b2c37",
+    },
+    buttons: {
+      inverted: {
+        hover: { color: "#fff", backgroundColor: "#635fc7" },
+        defaultState: { backgroundColor: "#fff", color: "#635fc7" },
+      },
+      normal: {
+        defaultState: { color: "#fff", backgroundColor: "#635fc7" },
+        hover: { backgroundColor: "#fff", color: "#635fc7" },
+      },
+      deleteTyp: {
+        defaultState: { color: "#fff", backgroundColor: "#ea5555" },
+        hover: { backgroundColor: "#fff", color: "#635fc7" },
+      },
+    },
+  };
+
+  const StyleState = useSelector(SelectStlyeMode);
+
+  const [bgStyle, setBgStyle] = useState({ ...defaultStyle });
+  useEffect(() => {
+    if (!bgStyle) return;
+    if (!StyleState) return;
+    setBgStyle(StyleState);
+  }, [StyleState]);
+
+  useState(() => {
+    dispatch(setTasksAction(fullData));
+    dispatch(SetViewMode({ ...defaultStyle }));
+  }, []);
+  console.log("home");
+
+  // const [styleId, setStyleId] = useState("dark");
+
+  // const [styleMode, setStyleMode] = useState(defaultStyle);
+  // useEffect(() => {
+  //   if (!styleMode) return;
+  //   dispatch(SetViewMode(defaultStyle));
+  // }, []);
 
   const [boardNav, SetboardNav] = useState(false);
   const handleState = () => {
     SetboardNav(!boardNav);
   };
-  const { boards } = fullData;
+
   const [boardsMenu, setBoardsMenuState] = useState(false);
   const handlesetBoardsMenuState = () => {
     setBoardsMenuState(!boardsMenu);
   };
+
+  console.log(bgStyle);
+
   return (
     <>
       {" "}
       <GlobalStyle />
-      <HomeContainer>
+      <HomeContainer style={{ backgroundColor: bgStyle.backgroundColor }}>
         <Navigation />
 
         <HideIcon handleClick={handlesetBoardsMenuState} />

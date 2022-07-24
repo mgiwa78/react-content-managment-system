@@ -1,3 +1,0 @@
-export const MODE_ACTION_TYPES = {
-  SET_VIEW_STATES: "SET_VIEW_STATES/home",
-};

@@ -1,7 +1,6 @@
 import { TASK_ACTION_TYPES } from "./task.types";
 
 export const setTasksAction = (tasks) => {
-  console.log(tasks);
   return {
     type: TASK_ACTION_TYPES.SET_TASKS_DATA,
     payload: tasks,
