@@ -15,7 +15,7 @@ export const AddBoardContainer = styled.div`
   align-items: center;
   color: #635fc7;
 
-  background-color: #2b2c37;
+  background-color: #e9effa49;
 
   min-height: calc(100vh - 250px);
   /* border: solid 2px red; */

@@ -14,7 +14,6 @@ export const BoardsMenuContainer = styled.div`
   /* transform: translateX(-50%); */
   box-shadow: 0px 5px 5px 4px #364e7e20;
   border-radius: 8px;
-  background-color: #2b2c37;
   padding: 20px;
   /* display: none; */
   align-items: flex-start;

@@ -3,7 +3,8 @@ import { ReactComponent as ArrowSvg } from "../../assets/icon-chevron-down.svg";
 import { ReactComponent as TrailSvg } from "../../assets/icon-vertical-ellipsis.svg";
 import { ReactComponent as PlusSvg } from "../../assets/icon-add-task-mobile.svg";
 import { ReactComponent as MobileLogoSvg } from "../../assets/logo-mobile.svg";
-import { ReactComponent as DesktopLogoSvg } from "../../assets/logo-light.svg";
+import { ReactComponent as LightDesktopLogoSvg } from "../../assets/logo-light.svg";
+import { ReactComponent as DarkDesktopLogoSvg } from "../../assets/logo-dark.svg";
 
 export const MenuComponent = styled.div`
   z-index: 8;
@@ -53,7 +54,10 @@ export const MenuText = styled.div`
 export const MobileLogoIcon = styled(MobileLogoSvg)`
   margin-right: 7px;
 `;
-export const DesktopLogoIcon = styled(DesktopLogoSvg)`
+export const DesktopLogoIcon = styled(LightDesktopLogoSvg)`
+  margin-right: 7px;
+`;
+export const DesktopLogoIconDark = styled(DarkDesktopLogoSvg)`
   margin-right: 7px;
 `;
 export const DesktopLogoBox = styled.div`

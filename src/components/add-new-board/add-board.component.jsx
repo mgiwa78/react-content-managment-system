@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { defaultStyle } from "../../assets/defaultStyles";
+import { SelectStlyeMode } from "../../store/style/style.selector";
 import Button from "../button/button.compoent";
 import FormInput, { TextAreaInput } from "../form-input/form-input.component";
 import OverlayContainer from "../overlaycontainer/overlay.component";
@@ -12,18 +15,33 @@ import {
 } from "./add-board.style";
 
 const AddBoard = ({ onExit }) => {
+  const StyleState = useSelector(SelectStlyeMode);
+
+  const [bgStyle, setBgStyle] = useState({ ...defaultStyle });
+  useEffect(() => {
+    if (!bgStyle) return;
+    if (!StyleState) return;
+    setBgStyle(StyleState);
+  }, [StyleState]);
+
   return (
     <OverlayContainer onExit={onExit}>
-      <AddBoardContainer>
-        <AddBoardTitle>Add new Board</AddBoardTitle>
+      <AddBoardContainer style={{ ...bgStyle.elements }}>
+        <AddBoardTitle style={{ color: bgStyle.elements.color }}>
+          Add new Board
+        </AddBoardTitle>
         <FormInput
+          color={bgStyle.elements.color}
           placeholder={"e.g. Web Design"}
           label={"Board Name"}
           name={"title"}
           value={"Enter title"}
         />
         <AddBoardSubBoardSection>
-          <AddBoardSubBoardTitle> Board Colums</AddBoardSubBoardTitle>
+          <AddBoardSubBoardTitle style={{ ...bgStyle.elements }}>
+            {" "}
+            Board Colums
+          </AddBoardSubBoardTitle>
           <AddBoardSubBoardBox>
             <FormInput
               placeholder={"Enter Title"}

@@ -16,6 +16,8 @@ import {
   setBoardsArrayAction,
   setBoardsObjectAction,
 } from "../../store/country/task.action";
+import { defaultStyle } from "../../assets/defaultStyles";
+import { SelectStlyeMode } from "../../store/style/style.selector";
 const BoardsDirectory = () => {
   const tasksObject = useSelector(SelectTaskObject);
   const boardsObject = useSelector(SelectBoardsObject);
@@ -38,12 +40,23 @@ const BoardsDirectory = () => {
     setBoards(boardsObject[boardpage]);
   }, [boardsObject, param]);
 
+  const StyleState = useSelector(SelectStlyeMode);
+
+  const [bgStyle, setBgStyle] = useState({ ...defaultStyle });
+  useEffect(() => {
+    if (!bgStyle) return;
+    if (!StyleState) return;
+    setBgStyle(StyleState);
+  }, [StyleState]);
+
   return (
     <BoardDirectoryContainer>
       {boards?.map((board) => (
         <BoardColumn key={board.name} board={board}></BoardColumn>
       ))}
-      <AddBoardContainer>+ New Column</AddBoardContainer>
+      <AddBoardContainer style={{ ...bgStyle.psudo }}>
+        + New Column
+      </AddBoardContainer>
     </BoardDirectoryContainer>
   );
 };

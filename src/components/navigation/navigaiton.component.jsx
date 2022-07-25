@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setTasksAction } from "../../store/country/task.action";
+import { SetViewMode } from "../../store/style/style.action";
 import AddTask from "../add task/add-task.component";
 import BoardsMenu from "../boards-menu/boards-menu.component";
 import EditBoard from "../edit board/edit-board.component";
@@ -22,9 +25,18 @@ import {
   MenuBtnDrpDwnOption,
   MenuBtnDrpIconBox,
   MenutrailIconBox,
+  DesktopLogoIconDark,
 } from "./navigation.styles";
 
+import { defaultStyle } from "../../assets/defaultStyles";
+import { SelectStlyeMode } from "../../store/style/style.selector";
+import { DarkIcon } from "../boards-menu/boards-menu.styles";
+
 const Navigation = () => {
+  const StyleState = useSelector(SelectStlyeMode);
+
+  const dispatch = useDispatch();
+
   const [boardNav, SetboardNav] = useState(false);
   const handleMenuDrpDwn = (e) => {
     // e.preventDefault();
@@ -50,9 +62,20 @@ const Navigation = () => {
   const handleSetEditBoardDisplayState = (e) => {
     SetEditBoardDisplayState(!editBoardDisplayState);
   };
+
+  const [pgStyle, setPgStyle] = useState({ ...defaultStyle });
+  useEffect(() => {
+    if (!pgStyle) return;
+    if (!StyleState) return;
+    setPgStyle(StyleState);
+  }, [StyleState]);
+
+  useState(() => {
+    dispatch(SetViewMode({ ...defaultStyle }));
+  }, []);
   return (
     <>
-      <MenuComponent>
+      <MenuComponent style={{ ...pgStyle.elements }}>
         {boardNav ? (
           <OverlayContainer
             onExit={() => handleMenuDrpDwn()}
@@ -68,7 +91,11 @@ const Navigation = () => {
         <MenuConstainerLeft>
           <MobileLogoIcon className="mobile"></MobileLogoIcon>
           <DesktopLogoBox className="desktop">
-            <DesktopLogoIcon />
+            {pgStyle.id === "dark" ? (
+              <DesktopLogoIcon />
+            ) : (
+              <DesktopLogoIconDark />
+            )}
           </DesktopLogoBox>
           <MenuText>Platform Launch</MenuText>
           <MenuBtnDrpIconBox>

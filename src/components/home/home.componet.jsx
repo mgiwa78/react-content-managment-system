@@ -16,30 +16,9 @@ import { setTasksAction } from "../../store/country/task.action";
 import HideIcon from "../hide icon/hide-icon.component";
 import { SetViewMode } from "../../store/style/style.action";
 import { SelectStlyeMode } from "../../store/style/style.selector";
-
+import { defaultStyle } from "../../assets/defaultStyles";
 const Home = () => {
   const dispatch = useDispatch();
-  const defaultStyle = {
-    id: "dark",
-    backgroundColor: "#20212c",
-    elements: {
-      backgroundColor: "#2b2c37",
-    },
-    buttons: {
-      inverted: {
-        hover: { color: "#fff", backgroundColor: "#635fc7" },
-        defaultState: { backgroundColor: "#fff", color: "#635fc7" },
-      },
-      normal: {
-        defaultState: { color: "#fff", backgroundColor: "#635fc7" },
-        hover: { backgroundColor: "#fff", color: "#635fc7" },
-      },
-      deleteTyp: {
-        defaultState: { color: "#fff", backgroundColor: "#ea5555" },
-        hover: { backgroundColor: "#fff", color: "#635fc7" },
-      },
-    },
-  };
 
   const StyleState = useSelector(SelectStlyeMode);
 

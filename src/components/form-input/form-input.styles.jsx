@@ -3,12 +3,17 @@ import styled, { css } from "styled-components/macro";
 export const FormInputContainer = styled.div``;
 export const TextInput = styled.input`
   background-color: transparent;
-  color: #fff;
   width: 100%;
   border: 1px solid #828fa357;
   padding: 10px 15px;
   margin-bottom: 10px;
   border-radius: 4px;
+  ${({ color }) => {
+    console.log(color);
+    css`
+      color: ${color};
+    `;
+  }}
   &::placeholder {
     color: #c4c4c440;
   }
@@ -59,7 +64,12 @@ export const SelectDrpContainer = styled.div``;
 export const SelectDrpValue = styled.h4`
   padding: 12px 10px;
   margin-bottom: 19px;
-  color: white;
+  ${({ color }) => {
+    console.log(color);
+    css`
+      color: ${color};
+    `;
+  }}
   font-size: 15px;
   font-weight: 300;
   border: 1px solid #828fa357;

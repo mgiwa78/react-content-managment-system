@@ -22,7 +22,6 @@ export const HomeContainer = styled.div`
   height: inherit;
   min-width: 100vw;
   min-height: 100vh;
-  background-color: #20212c;
 
   overflow: hidden !important;
 `;

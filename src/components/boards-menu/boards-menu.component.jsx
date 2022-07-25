@@ -30,56 +30,12 @@ import { setBoardsAction } from "../../store/country/task.action";
 import AddBoard from "../add-new-board/add-board.component";
 import { SetViewMode } from "../../store/style/style.action";
 import { SelectStlyeMode } from "../../store/style/style.selector";
+import { styleModes } from "../../assets/defaultStyles";
 
 const BoardsMenu = ({ handleHideMenu }) => {
   const dispatch = useDispatch();
 
   const StyleState = useSelector(SelectStlyeMode);
-
-  const styleModes = {
-    dark: {
-      id: "dark",
-      backgroundColor: "#20212c",
-      elements: {
-        backgroundColor: "#2b2c37",
-      },
-      buttons: {
-        inverted: {
-          hover: { color: "#fff", backgroundColor: "#635fc7" },
-          defaultState: { backgroundColor: "#fff", color: "#635fc7" },
-        },
-        normal: {
-          defaultState: { color: "#fff", backgroundColor: "#635fc7" },
-          hover: { backgroundColor: "#fff", color: "#635fc7" },
-        },
-        deleteTyp: {
-          defaultState: { color: "#fff", backgroundColor: "#ea5555" },
-          hover: { backgroundColor: "#fff", color: "#635fc7" },
-        },
-      },
-    },
-    light: {
-      id: "light",
-      backgroundColor: "#F4F7FD",
-      elements: {
-        backgroundColor: "#fff",
-      },
-      buttons: {
-        inverted: {
-          hover: { color: "#fff", backgroundColor: "#635fc7" },
-          defaultState: { backgroundColor: "#fff", color: "#635fc7" },
-        },
-        normal: {
-          defaultState: { color: "#fff", backgroundColor: "#635fc7" },
-          hover: { backgroundColor: "#fff", color: "#635fc7" },
-        },
-        deleteTyp: {
-          defaultState: { color: "#fff", backgroundColor: "#ea5555" },
-          hover: { backgroundColor: "#fff", color: "#635fc7" },
-        },
-      },
-    },
-  };
 
   const boardsArray = useSelector(SelectBoardsArray);
 
@@ -112,7 +68,7 @@ const BoardsMenu = ({ handleHideMenu }) => {
 
   return (
     <>
-      <BoardsMenuContainer>
+      <BoardsMenuContainer style={{ ...styleMode.elements }}>
         <BoardsMenuitemContainer>
           <BoardsMenuTitle>ALL BOARDS (3)</BoardsMenuTitle>
           <BoardsItems>
@@ -134,7 +90,10 @@ const BoardsMenu = ({ handleHideMenu }) => {
           </BoardsItems>
         </BoardsMenuitemContainer>
         <BoardermenuBottom>
-          <StyleModeToggle onClick={() => handleSetStyleMode()}>
+          <StyleModeToggle
+            style={{ backgroundColor: styleMode.toggle }}
+            onClick={() => handleSetStyleMode()}
+          >
             <DarkIcon />
             <LightIcon />
           </StyleModeToggle>

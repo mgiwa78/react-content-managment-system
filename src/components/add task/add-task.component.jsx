@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { defaultStyle } from "../../assets/defaultStyles";
+import { SelectStlyeMode } from "../../store/style/style.selector";
 import Button from "../button/button.compoent";
 import FormInput, {
   SelectDrp,
@@ -21,9 +24,18 @@ import {
 } from "./add-task.style";
 
 const AddTask = ({ onExit }) => {
+  const StyleState = useSelector(SelectStlyeMode);
+
+  const [bgStyle, setBgStyle] = useState({ ...defaultStyle });
+  useEffect(() => {
+    if (!bgStyle) return;
+    if (!StyleState) return;
+    setBgStyle(StyleState);
+  }, [StyleState]);
+
   return (
     <OverlayContainer onExit={onExit}>
-      <AddTaskContainer>
+      <AddTaskContainer style={{ ...bgStyle.elements }}>
         <AddTaskTitle>Add new task</AddTaskTitle>
         <FormInput
           placeholder={"Enter Title"}
@@ -72,7 +84,9 @@ const AddTask = ({ onExit }) => {
           <Button btnType="inverted">+ Add New Subtask</Button>
         </AddTaskSubTaskSection>
         <AddTaskStatusSection>
-          <AddTaskDropdownTitle>Status</AddTaskDropdownTitle>
+          <AddTaskDropdownTitle style={{ ...bgStyle.elements }}>
+            Status
+          </AddTaskDropdownTitle>
           <SelectDrp items={["Doing", "Done", "Todo"]}></SelectDrp>
 
           <Button btnType="normal">Create Task</Button>

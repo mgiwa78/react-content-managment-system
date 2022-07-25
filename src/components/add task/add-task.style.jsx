@@ -4,7 +4,6 @@ import { ReactComponent as CancelSvg } from "../../assets/icon-cross.svg";
 export const AddTaskContainer = styled.div`
   width: 200px;
   font-size: 12px;
-  background-color: #2b2c37;
   border-radius: 6px;
   position: relative;
   z-index: 9;
@@ -20,7 +19,6 @@ export const AddTaskContainer = styled.div`
   }
 `;
 export const AddTaskTitle = styled.div`
-  color: white;
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: 300;
@@ -39,7 +37,6 @@ export const AddTaskSubTaskBox = styled.div`
 export const AddTaskSubTaskTitle = styled.h6`
   font-size: 12px;
   font-weight: normal;
-  color: white;
 `;
 export const AddTaskSubTaskCancel = styled(CancelSvg)``;
 export const AddTaskDropdown = styled.div`
@@ -53,13 +50,11 @@ export const AddTaskDropdownSelect = styled.select`
   background-color: transparent;
   border-radius: 5px;
   border: solid 1px #828fa33d;
-  color: white;
 
   width: 100%;
 `;
 export const AddTaskDropdownTitle = styled.div`
   margin-bottom: 5px;
-  color: white;
   font-size: 12px;
   font-weight: 300;
 `;

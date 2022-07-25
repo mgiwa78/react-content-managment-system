@@ -20,7 +20,6 @@ export const AddBoardContainer = styled.div`
   }
 `;
 export const AddBoardTitle = styled.div`
-  color: white;
   font-size: 18px;
   margin-bottom: 10px;
   font-weight: 300;
@@ -37,6 +36,5 @@ export const AddBoardSubBoardBox = styled.div`
 export const AddBoardSubBoardTitle = styled.h6`
   font-size: 12px;
   font-weight: normal;
-  color: white;
 `;
 export const AddBoardSubBoardCancel = styled(CancelSvg)``;

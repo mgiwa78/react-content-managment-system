@@ -14,11 +14,12 @@ import {
   TextInput,
 } from "./form-input.styles";
 
-const FormInput = ({ placeholder, name, label, value }) => {
+const FormInput = ({ color, placeholder, name, label, value }) => {
   return (
     <FormInputContainer>
-      <FormInputLabel>{label}</FormInputLabel>
+      <FormInputLabel color={color}>{label}</FormInputLabel>
       <TextInput
+        color={color}
         // className="red"
         placeholder={`${placeholder}`}
         type={"text"}
