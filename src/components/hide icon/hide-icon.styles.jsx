@@ -12,5 +12,10 @@ export const HideIconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
+
+  @media screen and (min-width: 700px) {
+    display: flex !important;
+  }
 `;
 export const HideSvgIcon = styled(HideIconSvg)``;

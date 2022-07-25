@@ -83,7 +83,7 @@ const Home = () => {
       <HomeContainer style={{ backgroundColor: bgStyle.backgroundColor }}>
         <Navigation />
 
-        <HideIcon handleClick={handlesetBoardsMenuState} />
+        <HideIcon className="desktop" handleClick={handlesetBoardsMenuState} />
         <HomeDisplay>
           {boardsMenu ? (
             // <OverlayContainer handleClick={handlesetBoardsMenuState}>

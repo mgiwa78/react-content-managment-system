@@ -7,7 +7,8 @@ export const BoardsMenuContainer = styled.div`
   width: 264px;
   height: 322px;
   position: absolute;
-  z-index: 10;
+  z-index: 18;
+
   top: 0px;
   margin-top: 150px;
   /* transform: translateX(-50%); */
@@ -22,6 +23,7 @@ export const BoardsMenuContainer = styled.div`
   @media screen and (min-width: 700px) {
     justify-content: space-between;
     z-index: 4;
+    top: 0px;
 
     margin: 0px;
     border-radius: 0;

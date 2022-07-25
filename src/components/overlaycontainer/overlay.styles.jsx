@@ -23,6 +23,9 @@ export const OverLayContainerDiv = styled.div`
           `
         : css`
             background-color: #0000004b;
-          `}/* z-index: -4; */
+          `} /* z-index: -4; */
+            &.mobile {
+      display: none;
+    }
   }
 `;
