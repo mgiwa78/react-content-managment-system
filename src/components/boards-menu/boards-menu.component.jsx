@@ -32,7 +32,7 @@ import { SetViewMode } from "../../store/style/style.action";
 import { SelectStlyeMode } from "../../store/style/style.selector";
 import { styleModes } from "../../assets/defaultStyles";
 
-const BoardsMenu = ({ handleHideMenu }) => {
+const BoardsMenu = ({ handleHideMenu, borderC }) => {
   const dispatch = useDispatch();
 
   const StyleState = useSelector(SelectStlyeMode);
@@ -68,7 +68,9 @@ const BoardsMenu = ({ handleHideMenu }) => {
 
   return (
     <>
-      <BoardsMenuContainer style={{ ...styleMode.elements }}>
+      <BoardsMenuContainer
+        style={{ ...styleMode.elements, borderColor: styleMode.nav.borderC }}
+      >
         <BoardsMenuitemContainer>
           <BoardsMenuTitle>ALL BOARDS (3)</BoardsMenuTitle>
           <BoardsItems>

@@ -2,6 +2,9 @@ export const defaultStyle = {
   id: "dark",
   backgroundColor: "#20212c",
   toggle: "#20212c",
+  nav: {
+    borderC: "#364e7e20",
+  },
 
   elements: {
     backgroundColor: "#2b2c37",
@@ -44,6 +47,9 @@ export const styleModes = {
       backgroundColor: "#2b2c37",
       color: "#fff",
     },
+    nav: {
+      borderC: "#364e7e20",
+    },
     psudo: {
       backgroundColor: "#2b2c37",
       color: "#635fc7",
@@ -79,6 +85,9 @@ export const styleModes = {
     elements: {
       backgroundColor: "#fff",
       color: "#000",
+    },
+    nav: {
+      borderC: "#fff",
     },
     psudo: {
       backgroundColor: "#e9effa49",

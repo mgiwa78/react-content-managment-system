@@ -12,7 +12,7 @@ export const BoardsMenuContainer = styled.div`
   top: 0px;
   margin-top: 150px;
   /* transform: translateX(-50%); */
-  box-shadow: 0px 5px 5px 4px #364e7e20;
+  box-shadow: 0px 5px 5px 4px;
   border-radius: 8px;
   padding: 20px;
   /* display: none; */

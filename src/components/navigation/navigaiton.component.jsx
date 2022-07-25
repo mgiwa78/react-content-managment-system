@@ -31,6 +31,7 @@ import {
 import { defaultStyle } from "../../assets/defaultStyles";
 import { SelectStlyeMode } from "../../store/style/style.selector";
 import { DarkIcon } from "../boards-menu/boards-menu.styles";
+import { useParams } from "react-router-dom";
 
 const Navigation = () => {
   const StyleState = useSelector(SelectStlyeMode);
@@ -70,9 +71,12 @@ const Navigation = () => {
     setPgStyle(StyleState);
   }, [StyleState]);
 
+  const params = useParams();
+
   useState(() => {
     dispatch(SetViewMode({ ...defaultStyle }));
   }, []);
+  console.log(params);
   return (
     <>
       <MenuComponent style={{ ...pgStyle.elements }}>
@@ -90,14 +94,19 @@ const Navigation = () => {
 
         <MenuConstainerLeft>
           <MobileLogoIcon className="mobile"></MobileLogoIcon>
-          <DesktopLogoBox className="desktop">
+          <DesktopLogoBox
+            style={{ borderColor: pgStyle.nav.borderC }}
+            className="desktop"
+          >
             {pgStyle.id === "dark" ? (
               <DesktopLogoIcon />
             ) : (
               <DesktopLogoIconDark />
             )}
           </DesktopLogoBox>
-          <MenuText>Platform Launch</MenuText>
+          <MenuText>
+            {Object.keys(params).length ? params.boardpage : "Select a board"}
+          </MenuText>
           <MenuBtnDrpIconBox>
             <MenuBtnDrpIcon
               onClick={() => handleMenuDrpDwn()}
