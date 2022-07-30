@@ -3,7 +3,9 @@ import styled from "styled-components/macro";
 export const BoardDirectoryContainer = styled.div`
   display: flex;
   width: max-content;
-  padding: 40px 50px;
+  min-width: calc(100vw - 350px);
+  position: relative;
+  overflow-x: scroll;
   /* border: solid 2px red; */
 `;
 export const AddBoardContainer = styled.div`

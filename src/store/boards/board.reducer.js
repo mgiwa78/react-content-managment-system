@@ -1,9 +1,8 @@
-import { TASK_ACTION_TYPES } from "./task.types";
+import { BOARD_ACTION_TYPES } from "./board.types";
 
 const INITIAL_STATE = {
-  tasks: [],
-  boardsObject: {},
   boardsArray: [],
+  boardsObject: {},
 };
 
 export const taskReducer = (state = INITIAL_STATE, action) => {
@@ -11,11 +10,9 @@ export const taskReducer = (state = INITIAL_STATE, action) => {
   if (!type) return;
 
   switch (type) {
-    case TASK_ACTION_TYPES.SET_TASKS_DATA:
-      return { ...state, tasks: payload };
-    case TASK_ACTION_TYPES.SET_TASKS_BOARDS:
+    case BOARD_ACTION_TYPES.SET_BOARDS_DATA_ARRAY:
       return { ...state, boardsArray: payload };
-    case TASK_ACTION_TYPES.SET_TASKS_BOARDS_OBJECT:
+    case BOARD_ACTION_TYPES.SET_BOARDS_OBJECT:
       return { ...state, boardsObject: payload };
 
     default:

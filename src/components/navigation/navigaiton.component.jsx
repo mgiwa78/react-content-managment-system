@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTasksAction } from "../../store/country/task.action";
+import { setTasksAction } from "../../store/boards/board.action";
 import { SetViewMode } from "../../store/style/style.action";
 import AddTask from "../add task/add-task.component";
 import BoardsMenu from "../boards-menu/boards-menu.component";
@@ -32,8 +32,13 @@ import { defaultStyle } from "../../assets/defaultStyles";
 import { SelectStlyeMode } from "../../store/style/style.selector";
 import { DarkIcon } from "../boards-menu/boards-menu.styles";
 import { useParams } from "react-router-dom";
+import { SelectBoardsObject } from "../../store/boards/board.selector";
 
 const Navigation = () => {
+  const param = useParams();
+
+  const BoardsObject = useSelector(SelectBoardsObject);
+
   const StyleState = useSelector(SelectStlyeMode);
 
   const dispatch = useDispatch();
@@ -71,12 +76,18 @@ const Navigation = () => {
     setPgStyle(StyleState);
   }, [StyleState]);
 
-  const params = useParams();
-
   useState(() => {
     dispatch(SetViewMode({ ...defaultStyle }));
   }, []);
-  console.log(params);
+  const [boardTitle, setBoardTitle] = useState("Select Board");
+
+  useEffect(() => {
+    if (Object.keys(BoardsObject).length === 0) return;
+    const { boardpage } = param;
+    boardpage
+      ? setBoardTitle(BoardsObject[boardpage].name)
+      : setBoardTitle("Invalid Board Url");
+  }, [param]);
   return (
     <>
       <MenuComponent style={{ ...pgStyle.elements }}>
@@ -104,9 +115,7 @@ const Navigation = () => {
               <DesktopLogoIconDark />
             )}
           </DesktopLogoBox>
-          <MenuText>
-            {Object.keys(params).length ? params.boardpage : "Select a board"}
-          </MenuText>
+          <MenuText>{boardTitle}</MenuText>
           <MenuBtnDrpIconBox>
             <MenuBtnDrpIcon
               onClick={() => handleMenuDrpDwn()}

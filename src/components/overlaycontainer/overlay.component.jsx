@@ -9,8 +9,6 @@ const OverlayContainer = ({
   State = true,
   type,
 }) => {
-  console.log("overlay");
-
   const [overlayState, setOverlayState] = useState(true);
   const handleHideOverlay = (e) => {
     const { id } = e.target;

@@ -9,14 +9,23 @@ export const TextInput = styled.input`
   margin-bottom: 10px;
   border-radius: 4px;
   ${({ color }) => {
-    console.log(color);
-    css`
-      color: ${color};
-    `;
+    if (color === "dark")
+      return css`
+        background-color: transparent;
+        color: #fff;
+
+        &::placeholder {
+          color: #c4c4c440;
+        }
+      `;
+    else
+      return css`
+        color: #000;
+        &::placeholder {
+          color: #0000009d;
+        }
+      `;
   }}
-  &::placeholder {
-    color: #c4c4c440;
-  }
 
   @media screen and (min-width: 360px) {
     min-width: 260px;
@@ -39,8 +48,24 @@ export const ErrorText = styled.span`
   font-size: 12px;
 `;
 export const TextAraInput = styled.textarea`
-  background-color: transparent;
-  color: #fff;
+  ${({ color }) => {
+    if (color === "dark")
+      return css`
+        color: #fff;
+
+        background-color: transparent;
+        &::placeholder {
+          color: #c4c4c440;
+        }
+      `;
+    else
+      return css`
+        color: #000;
+        &::placeholder {
+          color: #00000068;
+        }
+      `;
+  }}
   width: 100%;
   border: 1px solid #828fa357;
   padding: 10px 15px;
@@ -48,28 +73,20 @@ export const TextAraInput = styled.textarea`
   height: 150px;
   line-height: 19px;
   resize: none;
-  &::placeholder {
-    color: #c4c4c440;
-  }
 `;
 export const FormInputLabel = styled.p`
   font-size: 12px;
   letter-spacing: 1px;
   margin-bottom: 5px;
+  font-weight: 600;
 
-  color: white;
   text-transform: capitalize;
 `;
 export const SelectDrpContainer = styled.div``;
 export const SelectDrpValue = styled.h4`
   padding: 12px 10px;
   margin-bottom: 19px;
-  ${({ color }) => {
-    console.log(color);
-    css`
-      color: ${color};
-    `;
-  }}
+
   font-size: 15px;
   font-weight: 300;
   border: 1px solid #828fa357;

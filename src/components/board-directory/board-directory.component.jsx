@@ -6,21 +6,21 @@ import {
 } from "./board-directory.styles";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  SelectBoardsArray,
   SelectBoardsObject,
-  SelectTaskObject,
-} from "../../store/country/task.selector";
+} from "../../store/boards/board.selector";
 
 import { useParams } from "react-router-dom";
 import {
   setBoardsAction,
   setBoardsArrayAction,
   setBoardsObjectAction,
-} from "../../store/country/task.action";
+} from "../../store/boards/board.action";
 import { defaultStyle } from "../../assets/defaultStyles";
 import { SelectStlyeMode } from "../../store/style/style.selector";
 const BoardsDirectory = () => {
-  const tasksObject = useSelector(SelectTaskObject);
-  const boardsObject = useSelector(SelectBoardsObject);
+  const BoardsObject = useSelector(SelectBoardsObject);
+  const BoardsArray = useSelector(SelectBoardsArray);
 
   const dispatch = useDispatch();
   const param = useParams();
@@ -28,17 +28,11 @@ const BoardsDirectory = () => {
   const [boards, setBoards] = useState([]);
 
   useEffect(() => {
-    if (!tasksObject) return;
-    dispatch(setBoardsArrayAction(tasksObject.boards));
-
-    dispatch(setBoardsObjectAction(tasksObject.boards));
-  }, [tasksObject]);
-
-  useEffect(() => {
-    if (Object.keys(boardsObject).length === 0) return;
+    if (Object.keys(BoardsObject).length === 0) return;
+    if (Object.keys(BoardsArray).length === 0) return;
     const { boardpage } = param;
-    setBoards(boardsObject[boardpage]);
-  }, [boardsObject, param]);
+    setBoards(BoardsObject[boardpage]);
+  }, [BoardsArray, param]);
 
   const StyleState = useSelector(SelectStlyeMode);
 
@@ -51,12 +45,15 @@ const BoardsDirectory = () => {
 
   return (
     <BoardDirectoryContainer>
-      {boards?.map((board) => (
-        <BoardColumn key={board.name} board={board}></BoardColumn>
-      ))}
-      <AddBoardContainer style={{ ...bgStyle.psudo }}>
-        + New Column
-      </AddBoardContainer>
+      {boards?.name ? (
+        boards.columns.map((column) => (
+          <BoardColumn key={column.name} columns={column} />
+        ))
+      ) : (
+        <AddBoardContainer style={{ ...bgStyle.psudo }}>
+          + New Column
+        </AddBoardContainer>
+      )}
     </BoardDirectoryContainer>
   );
 };

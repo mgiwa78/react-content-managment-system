@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
   SelectBoardsArray,
+  SelectBoardsObject,
   SelectTaskObject,
-} from "../../store/country/task.selector";
+} from "../../store/boards/board.selector";
 import OverlayContainer from "../overlaycontainer/overlay.component";
 import {
   BoardermenuBottom,
@@ -26,13 +27,16 @@ import {
 import { Navigate, Link } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setBoardsAction } from "../../store/country/task.action";
+import {
+  setBoardsAction,
+  setBoardsObjectAction,
+} from "../../store/boards/board.action";
 import AddBoard from "../add-new-board/add-board.component";
 import { SetViewMode } from "../../store/style/style.action";
 import { SelectStlyeMode } from "../../store/style/style.selector";
 import { styleModes } from "../../assets/defaultStyles";
 
-const BoardsMenu = ({ handleHideMenu, borderC }) => {
+const BoardsMenu = ({ handleHideMenu }) => {
   const dispatch = useDispatch();
 
   const StyleState = useSelector(SelectStlyeMode);
@@ -40,10 +44,6 @@ const BoardsMenu = ({ handleHideMenu, borderC }) => {
   const boardsArray = useSelector(SelectBoardsArray);
 
   const [boardsItems, setBoardItems] = useState([]);
-  useEffect(() => {
-    if (!boardsArray) return;
-    setBoardItems(boardsArray);
-  }, [boardsArray]);
 
   const [addBoardDisplayState, SetAddboardDisplayState] = useState(false);
   const handleSetAddboardDisplayState = (e) => {
@@ -66,6 +66,11 @@ const BoardsMenu = ({ handleHideMenu, borderC }) => {
     }
   }, [styleMode]);
 
+  useEffect(() => {
+    if (!boardsArray) return;
+    setBoardItems(boardsArray);
+  }, [boardsArray]);
+
   return (
     <>
       <BoardsMenuContainer
@@ -77,7 +82,7 @@ const BoardsMenu = ({ handleHideMenu, borderC }) => {
             {boardsItems.map((board) => (
               <BoardsMenuitem
                 as={Link}
-                to={`/${board.name.split(" ").join("")}`}
+                to={`/${board.name.toLowerCase().split(" ").join("")}`}
                 key={board.name}
               >
                 <BoardsItemBullet className="bullet" />{" "}

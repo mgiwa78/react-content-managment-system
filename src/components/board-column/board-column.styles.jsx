@@ -9,6 +9,7 @@ export const BoardsColumnContainer = styled.div`
   align-content: center;
   height: inherit;
   width: max-content;
+  min-width: max-content;
   /* border: solid 2px yellow; */
   max-height: 600px;
   margin-right: 30px;

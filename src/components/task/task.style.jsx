@@ -4,7 +4,6 @@ import { ReactComponent as TrailSvg } from "../../assets/icon-vertical-ellipsis.
 
 export const TaskContainer = styled.div`
   width: 200px;
-  background-color: #2b2c37;
   border-radius: 6px;
   position: relative;
   z-index: 90;
@@ -23,7 +22,6 @@ export const TaskContainerBottom = styled.div`
 `;
 export const TaskTitle = styled.span`
   font-size: 18px;
-  color: white;
 `;
 export const TaskDescription = styled.p`
   font-size: 13px;
@@ -33,7 +31,6 @@ export const TaskDescription = styled.p`
   margin-top: 10px;
 `;
 export const TaskSubtasksTitle = styled.div`
-  color: white;
   font-size: 12px;
   font-weight: 300;
   letter-spacing: 0.7px;
@@ -103,34 +100,47 @@ export const TaskCheckBox = styled.div`
   margin-bottom: 10px;
   font-size: 12px;
   height: max-content;
+  font-weight: 500;
   padding: 15px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 400;
 
-  background-color: #20212c;
   border-radius: 4px;
   /* &:hover {
     background-color: #635fc7;
   } */
 
-  &.complete {
-    text-decoration: line-through;
-    color: white;
-  }
-  &:hover {
-    background-color: #635fc7;
-  }
+  ${({ styleState }) => {
+    if (styleState === "dark")
+      return css`
+        background-color: #20212c;
+        color: #fff;
 
-  &.checked {
-    &:hover {
-      background-color: #635fc7;
-
-      .check-icon-box {
-        background-color: #2b2c37 !important;
-      }
-    }
-  }
+        &:hover {
+          background-color: #635fc7;
+          .checked {
+            background-color: #20212c !important;
+          }
+        }
+        &.complete {
+          text-decoration: line-through;
+          color: white;
+        }
+      `;
+    else
+      return css`
+        background-color: #fff;
+        &:hover {
+          color: #fff !important;
+          background-color: #635fc7;
+        }
+        &.complete {
+          text-decoration: line-through;
+        }
+      `;
+  }}
 `;
 export const CheckBoxIcon = styled(CheckSvg)``;
 export const TaskCheckIconBox = styled.div`
@@ -141,11 +151,40 @@ export const TaskCheckIconBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${({ styleState }) => {
+    console.log(styleState);
+    if (styleState === "dark")
+      return css`
+        background-color: #fff;
+
+        &:hover {
+          background-color: #fff;
+        }
+        &.checked {
+          background-color: #635fc7;
+        }
+      `;
+    else
+      return css`
+        background-color: #fff;
+        border: 1px solid rgba(130, 143, 163, 0.25);
+        border-radius: 2px;
+
+        &:hover {
+          background-color: #fff;
+        }
+        &.checked {
+          border: none;
+
+          background-color: #635fc7;
+        }
+      `;
+  }}
 `;
 export const TaskCheckBoxName = styled.div`
   width: 100%;
   padding-left: 15px;
-  color: white;
 `;
 
 export const TaskDropdown = styled.div`

@@ -33,6 +33,10 @@ export const AddBoardSubBoardBox = styled.div`
   align-items: center;
   width: 100%;
 `;
+export const AddBoardSubContainer = styled.div`
+  height: inherit;
+  width: inherit;
+`;
 export const AddBoardSubBoardTitle = styled.h6`
   font-size: 12px;
   font-weight: normal;

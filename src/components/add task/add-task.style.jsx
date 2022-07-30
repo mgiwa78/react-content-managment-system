@@ -21,7 +21,7 @@ export const AddTaskContainer = styled.div`
 export const AddTaskTitle = styled.div`
   font-size: 18px;
   margin-bottom: 10px;
-  font-weight: 300;
+  font-weight: 700;
 `;
 export const AddTaskDesctription = styled.input``;
 export const AddTaskSubTaskSection = styled.div`
@@ -36,7 +36,11 @@ export const AddTaskSubTaskBox = styled.div`
 `;
 export const AddTaskSubTaskTitle = styled.h6`
   font-size: 12px;
-  font-weight: normal;
+  font-weight: 600;
+`;
+export const SubTasksContainer = styled.h6`
+  font-size: 12px;
+  font-weight: 600;
 `;
 export const AddTaskSubTaskCancel = styled(CancelSvg)``;
 export const AddTaskDropdown = styled.div`
@@ -56,5 +60,5 @@ export const AddTaskDropdownSelect = styled.select`
 export const AddTaskDropdownTitle = styled.div`
   margin-bottom: 5px;
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 600;
 `;

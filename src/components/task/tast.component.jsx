@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { defaultStyle } from "../../assets/defaultStyles";
+import { SelectStlyeMode } from "../../store/style/style.selector";
 import { SelectDrp } from "../form-input/form-input.component";
 import OverlayContainer from "../overlaycontainer/overlay.component";
 import { OverLayContainerDiv } from "../overlaycontainer/overlay.styles";
@@ -24,17 +26,48 @@ import {
   TaskTitle,
 } from "./task.style";
 
-const Task = ({ task }) => {
-  console.log(task);
+import { useSelector } from "react-redux";
+
+const Task = ({ task, taskStyles }) => {
+  const StyleState = useSelector(SelectStlyeMode);
+
+  //
+  //
+  //
   const [optionDrp, setOptionDrp] = useState(false);
   const handleSetOptionDrp = () => {
     setOptionDrp(!optionDrp);
   };
+  //
+  //
+  //
+  const [drpState, setDrpState] = useState("none");
+  const handleDropAction = () => {
+    drpState === "none" ? setDrpState("block") : setDrpState("none");
+  };
+
+  const [drpValue, setValue] = useState("Select an option");
+  const handleItemAction = (e) => {
+    const newValue = e.target.textContent;
+    setValue(newValue);
+  };
+  //
+  //
+  //
+
+  const [Style, setStyles] = useState({ ...defaultStyle });
+  useEffect(() => {
+    if (!Style) return;
+    if (!StyleState) return;
+    setStyles(StyleState);
+  }, [StyleState]);
+  const { color, backgroundColor } = Style.elements;
+
   return (
     <OverlayContainer>
-      <TaskContainer>
+      <TaskContainer style={{ backgroundColor }}>
         <TaskContainerTop>
-          <TaskTitle>
+          <TaskTitle style={{ color }}>
             {task.title}
 
             <MenutrailIconBox onClick={() => handleSetOptionDrp()}>
@@ -55,19 +88,18 @@ const Task = ({ task }) => {
           <TaskDescription>{task.description}</TaskDescription>
         </TaskContainerTop>
         <TaskContainerBottom>
-          <TaskSubtasksTitle>Subtasks (2 of 3)</TaskSubtasksTitle>
+          <TaskSubtasksTitle style={{ color }}>
+            Subtasks (2 of 3)
+          </TaskSubtasksTitle>
           {task.subtasks.map((subtask) => (
             <TaskCheckBox
+              styleState={Style.id}
               key={subtask.title}
-              className={`checked ${subtask.isCompleted && "complete"}`}
+              className={` ${subtask.isCompleted && "complete"}`}
             >
               <TaskCheckIconBox
-                className="check-icon-box"
-                style={
-                  subtask.isCompleted
-                    ? { backgroundColor: "#635fc7" }
-                    : { backgroundColor: "#fff" }
-                }
+                styleState={Style.id}
+                className={`check-icon-box ${subtask.isCompleted && "checked"}`}
               >
                 {" "}
                 <CheckBoxIcon />
@@ -78,7 +110,15 @@ const Task = ({ task }) => {
 
           <TaskDropdown>
             <TaskDropdownTitle>Current Status</TaskDropdownTitle>
-            <SelectDrp items={["Doing", "Done", "Todo"]}></SelectDrp>
+            <SelectDrp
+              colorStyle={Style.elements.color}
+              handleItemAction={(e) => handleItemAction(e)}
+              dropState={drpState}
+              setValue={() => setValue()}
+              handleDropDownAction={() => handleDropAction()}
+              dropDownValue={drpValue}
+              items={["Doing", "Done", "Todo"]}
+            ></SelectDrp>
           </TaskDropdown>
         </TaskContainerBottom>
       </TaskContainer>
