@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-content-managment-system/static/css/main.6ea95770.css",
-    "main.js": "/react-content-managment-system/static/js/main.6b4f040a.js",
+    "main.css": "/react-content-managment-system/static/css/main.6bd29d2d.css",
+    "main.js": "/react-content-managment-system/static/js/main.849154ba.js",
     "static/js/787.ca40ee00.chunk.js": "/react-content-managment-system/static/js/787.ca40ee00.chunk.js",
     "static/media/logo-dark.svg": "/react-content-managment-system/static/media/logo-dark.ac4c8e487da046e58b1d44d8797a975e.svg",
     "static/media/logo-light.svg": "/react-content-managment-system/static/media/logo-light.1e20d87d61c965503a5323cc3bd2c827.svg",
@@ -17,12 +17,12 @@
     "static/media/icon-add-task-mobile.svg": "/react-content-managment-system/static/media/icon-add-task-mobile.2a8e26ad102dab09554faa37c9d62c19.svg",
     "static/media/icon-check.svg": "/react-content-managment-system/static/media/icon-check.4e068cb6e6e3395eda40ccf42917b447.svg",
     "static/media/icon-chevron-down.svg": "/react-content-managment-system/static/media/icon-chevron-down.77595c15c9072ba0ef8a21ab5cc8c376.svg",
-    "main.6ea95770.css.map": "/react-content-managment-system/static/css/main.6ea95770.css.map",
-    "main.6b4f040a.js.map": "/react-content-managment-system/static/js/main.6b4f040a.js.map",
+    "main.6bd29d2d.css.map": "/react-content-managment-system/static/css/main.6bd29d2d.css.map",
+    "main.849154ba.js.map": "/react-content-managment-system/static/js/main.849154ba.js.map",
     "787.ca40ee00.chunk.js.map": "/react-content-managment-system/static/js/787.ca40ee00.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ea95770.css",
-    "static/js/main.6b4f040a.js"
+    "static/css/main.6bd29d2d.css",
+    "static/js/main.849154ba.js"
   ]
 }
