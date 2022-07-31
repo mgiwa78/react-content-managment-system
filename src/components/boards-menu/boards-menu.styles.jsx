@@ -12,12 +12,18 @@ export const BoardsMenuContainer = styled.div`
   top: 0px;
   margin-top: 150px;
   /* transform: translateX(-50%); */
-  box-shadow: 0px 5px 5px 4px;
+  box-shadow: 0px 5px 5px 4px #364e7e27;
   border-radius: 8px;
   padding: 20px;
   /* display: none; */
   align-items: flex-start;
   flex-direction: column;
+  &.desktop {
+    display: none;
+  }
+  &.mobile {
+    display: flex;
+  }
 
   @media screen and (min-width: 700px) {
     justify-content: space-between;
@@ -33,7 +39,6 @@ export const BoardsMenuContainer = styled.div`
     font-size: 15px;
     overflow: hidden;
     z-index: 18;
-    display: flex;
     justify-content: space-between;
 
     width: 261px;
@@ -43,6 +48,15 @@ export const BoardsMenuContainer = styled.div`
   @media screen and (min-width: 1000px) {
     width: 300px;
     height: calc(100vh - 94px);
+  }
+  @media screen and (min-width: 770px) {
+    &.mobile {
+      display: none;
+    }
+    &.desktop {
+      display: flex !important;
+      justify-content: space-between;
+    }
   }
 `;
 export const BoardsItems = styled.div`

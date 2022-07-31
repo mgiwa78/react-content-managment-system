@@ -77,6 +77,7 @@ const Home = () => {
           {boardsMenu ? (
             // <OverlayContainer handleClick={handlesetBoardsMenuState}>
             <BoardsMenu
+              desktop
               borderC={`${bgStyle.backgroundColor}`}
               handleHideMenu={handlesetBoardsMenuState}
             />

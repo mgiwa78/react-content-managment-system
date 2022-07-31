@@ -141,7 +141,6 @@ export const MenuBtnPlusIconBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #635fc7;
   border-radius: 24px;
 
   width: 48px;
@@ -150,6 +149,12 @@ export const MenuBtnPlusIconBox = styled.div`
     height: 40px;
     width: 164px;
     color: white;
+  }
+  &.active {
+    background-color: #635fc7;
+  }
+  &.not_active {
+    background-color: #625fc756;
   }
 `;
 export const PlusBtnText = styled.span`

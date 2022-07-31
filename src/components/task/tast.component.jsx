@@ -10,7 +10,6 @@ import {
   MenuBtnDrpDwnOption,
   MenutrailIcon,
   MenutrailIconBox,
-  TaskCheckBox,
   TaskCheckBoxIcon,
   TaskCheckBoxName,
   TaskCheckIconBox,
@@ -27,6 +26,7 @@ import {
 } from "./task.style";
 
 import { useSelector } from "react-redux";
+import TaskCheckBox from "../task-checkbox/taskcheckbox.component";
 
 const Task = ({ task, taskStyles }) => {
   const StyleState = useSelector(SelectStlyeMode);
@@ -92,21 +92,25 @@ const Task = ({ task, taskStyles }) => {
             Subtasks (2 of 3)
           </TaskSubtasksTitle>
           {task.subtasks.map((subtask) => (
-            <TaskCheckBox
-              styleState={Style.id}
-              key={subtask.title}
-              className={` ${subtask.isCompleted && "complete"}`}
-            >
-              <TaskCheckIconBox
-                styleState={Style.id}
-                className={`check-icon-box ${subtask.isCompleted && "checked"}`}
-              >
-                {" "}
-                <CheckBoxIcon />
-              </TaskCheckIconBox>
-              <TaskCheckBoxName>{subtask.title}</TaskCheckBoxName>
-            </TaskCheckBox>
+            <TaskCheckBox key={subtask.title} subtask={subtask} style={Style} />
           ))}
+
+          {
+            // <TaskCheckBox
+            //   styleState={Style.id}
+            //   key={subtask.title}
+            //   className={` ${subtask.isCompleted && "complete"}`}
+            // >
+            //   <TaskCheckIconBox
+            //     styleState={Style.id}
+            //     className={`check-icon-box ${subtask.isCompleted && "checked"}`}
+            //   >
+            //     {" "}
+            //     <CheckBoxIcon />
+            //   </TaskCheckIconBox>
+            //   <TaskCheckBoxName>{subtask.title}</TaskCheckBoxName>
+            // </TaskCheckBox>}}}
+          }
 
           <TaskDropdown>
             <TaskDropdownTitle>Current Status</TaskDropdownTitle>

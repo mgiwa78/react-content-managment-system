@@ -31,6 +31,10 @@ export const EditBoardSubBoardBox = styled.div`
   align-items: center;
   width: 100%;
 `;
+
+export const EditBoardAddSubTaskSection = styled.div`
+  margin-top: 15px;
+`;
 export const EditBoardSubBoardTitle = styled.h6`
   font-size: 12px;
   font-weight: normal;

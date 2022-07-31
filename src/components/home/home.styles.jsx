@@ -22,24 +22,26 @@ export const HomeContainer = styled.div`
   height: inherit;
 
   height: inherit;
-  overflow: hidden !important;
+  overflow: hidden;
+  width: 100vw;
 `;
 export const HomeDisplay = styled.div`
-  overflow: hidden !important;
+  overflow: hidden;
+  width: 100vw;
 
   /* padding: 130px 30px 40px; */
-  padding: 40px 30px;
-  min-width: calc(100vw - 100px);
+  min-width: 100vw;
   display: flex;
   align-content: flex-start;
   justify-content: flex-start;
   align-items: flex-start;
   min-height: calc(100vh - 60.99px);
-
+  /* 
   @media screen and (min-width: 700px) {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 300px);
+    height: max-content;
   }
   @media screen and (min-width: 1000px) {
     min-height: calc(100vh - 93.99px);
-  }
+  } */
 `;

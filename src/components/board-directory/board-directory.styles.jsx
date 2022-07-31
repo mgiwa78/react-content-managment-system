@@ -6,6 +6,10 @@ export const BoardDirectoryContainer = styled.div`
   min-width: calc(100vw - 350px);
   position: relative;
   overflow-x: scroll;
+  padding: 40px 40px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   /* border: solid 2px red; */
 `;
 export const AddBoardContainer = styled.div`

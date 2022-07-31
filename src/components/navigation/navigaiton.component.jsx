@@ -61,6 +61,7 @@ const Navigation = () => {
 
   const [addTaskDisplay, setAddTaskDisplay] = useState(false);
   const handleAddTaskDisplay = (e) => {
+    if (!currentBoard.name) return;
     setAddTaskDisplay(!addTaskDisplay);
   };
 
@@ -88,6 +89,13 @@ const Navigation = () => {
       ? setBoardTitle(BoardsObject[boardpage].name)
       : setBoardTitle("Invalid Board Url");
   }, [param]);
+
+  const [currentBoard, setCurrentBoard] = useState("none");
+  useEffect(() => {
+    const currentBoardObject = BoardsObject[param.boardpage];
+    if (currentBoardObject?.name) setCurrentBoard(currentBoardObject);
+  }, [param]);
+
   return (
     <>
       <MenuComponent style={{ ...pgStyle.elements }}>
@@ -124,7 +132,10 @@ const Navigation = () => {
           </MenuBtnDrpIconBox>
         </MenuConstainerLeft>
         <MenuConstainerRight>
-          <MenuBtnPlusIconBox onClick={(e) => handleAddTaskDisplay(e)}>
+          <MenuBtnPlusIconBox
+            className={currentBoard.name ? `active` : "not_active"}
+            onClick={(e) => handleAddTaskDisplay(e)}
+          >
             <PlusIcon className="mobile" />
             <PlusBtnText className="desktop">Add New Task</PlusBtnText>
           </MenuBtnPlusIconBox>

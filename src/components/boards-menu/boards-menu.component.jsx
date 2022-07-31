@@ -36,7 +36,7 @@ import { SetViewMode } from "../../store/style/style.action";
 import { SelectStlyeMode } from "../../store/style/style.selector";
 import { styleModes } from "../../assets/defaultStyles";
 
-const BoardsMenu = ({ handleHideMenu }) => {
+const BoardsMenu = ({ handleHideMenu, desktop }) => {
   const dispatch = useDispatch();
 
   const StyleState = useSelector(SelectStlyeMode);
@@ -74,6 +74,7 @@ const BoardsMenu = ({ handleHideMenu }) => {
   return (
     <>
       <BoardsMenuContainer
+        className={desktop ? `desktop` : "mobile"}
         style={{ ...styleMode.elements, borderColor: styleMode.nav.borderC }}
       >
         <BoardsMenuitemContainer>
